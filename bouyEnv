@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "Don't run this. 
+Don't run this as root.
+If you do, you're as stupid as the guy who wrote it."
+##virtualbox install
+wget -c http://download.virtualbox.org/virtualbox/5.1.2/VirtualBox-5.1.2-108956-Linux_x86.run
+chmod +x VirtualBox-5.1.2-108956-Linux_x86.run
+./VirtualBox-5.1.2-108956-Linux_x86.run
+rm VirtualBox-5.1.2-108956-Linux_x86.run
+##vagrant install
+wget -c https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_i686.deb
+dpkg --install vagrant_1.8.5_i686.deb
+rm vagrant_1.8.5_i686.deb
+##hack vagrant for convenience
+vagrant plugin install vagrant-hostsupdater
+vagrant plugin install vagrant-triggers
+vagrant plugin install vagrant-vbguest
+git clone git://github.com/Varying-Vagrant-Vagrants/VVV.git vagrant-local
+cd vagrant-local
+vagrant up
+##finish up
+echo "If you were stupid enough to run this script, i hope it worked for you!
+You'll still have a bit to do manually, you lazy bastard!
+visit https://github.com/betterangels/buoy/wiki/Setting-up-a-development-environment for more details!
+(you're on step 11 or so)"
